@@ -4,8 +4,8 @@ import (
 	"golang.org/x/sys/windows/registry"
 	"os"
 
-	"github.com/hackirby/skuld/utils/fileutil"
-	"github.com/hackirby/skuld/utils/program"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/fileutil"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/program"
 )
 
 func Run() error {

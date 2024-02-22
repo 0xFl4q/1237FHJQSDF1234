@@ -1,4 +1,4 @@
-module github.com/hackirby/skuld
+module github.com/0xFl4q/1237FHJQSDF1234
 
 go 1.21.3
 

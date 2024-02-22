@@ -10,7 +10,7 @@ import (
 
 	"strings"
 
-	"github.com/hackirby/skuld/utils/program"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/program"
 )
 
 func Run() {

